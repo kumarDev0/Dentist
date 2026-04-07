@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useEffect, useState, useRef } from 'react';
 
 export default function SmileCraft() {
@@ -8,7 +9,6 @@ export default function SmileCraft() {
   const nameInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Scroll Reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -20,13 +20,8 @@ export default function SmileCraft() {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Navbar Scroll
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -61,9 +56,9 @@ export default function SmileCraft() {
       <nav id="navbar" style={{ padding: isScrolled ? '0' : '' }}>
         <div className="nav-inner">
           <div className="logo">SmileCraft <span>Dental Studio</span></div>
-          <button 
-            className={`hamburger ${isMenuOpen ? 'open' : ''}`} 
-            id="hamburger" 
+          <button
+            className={`hamburger ${isMenuOpen ? 'open' : ''}`}
+            id="hamburger"
             aria-label="Menu"
             onClick={toggleMenu}
           >
@@ -79,9 +74,17 @@ export default function SmileCraft() {
         </div>
       </nav>
 
+      {/* HERO */}
       <section id="hero">
         <div className="hero-bg-img">
-          <img src="https://images.pexels.com/photos/5622277/pexels-photo-5622277.jpeg" alt="Modern dental clinic interior" loading="eager" />
+          <Image
+            src="https://images.pexels.com/photos/5622277/pexels-photo-5622277.jpeg"
+            alt="Modern dental clinic interior"
+            fill
+            priority
+            style={{ objectFit: 'cover' }}
+            sizes="100vw"
+          />
           <div className="hero-overlay"></div>
         </div>
         <div className="hero-content">
@@ -89,7 +92,7 @@ export default function SmileCraft() {
             <span className="badge-dot"></span>
             Koregaon Park, Pune
           </div>
-          <h1>Where <em>Confidence</em><br/>Begins With<br/>Your Smile</h1>
+          <h1>Where <em>Confidence</em><br />Begins With<br />Your Smile</h1>
           <p className="hero-sub">Premium dental care designed around you. From subtle enhancements to complete smile transformations — crafted with precision and care.</p>
           <div className="hero-actions">
             <a href="#contact" className="btn-primary" onClick={(e) => handleSmoothScroll(e, 'contact')}>Book Consultation</a>
@@ -114,25 +117,55 @@ export default function SmileCraft() {
         </div>
       </section>
 
+      {/* PHOTOS STRIP */}
       <div className="photos-strip">
         <div className="photo-item">
-          <img src="https://images.pexels.com/photos/6812427/pexels-photo-6812427.jpeg" alt="Dental clinic reception" />
+          <Image
+            src="https://images.pexels.com/photos/6812427/pexels-photo-6812427.jpeg"
+            alt="Dental clinic reception"
+            width={400}
+            height={300}
+            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
           <span>Reception Area</span>
         </div>
         <div className="photo-item">
-          <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80" alt="Treatment room" />
+          <Image
+            src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80"
+            alt="Treatment room"
+            width={400}
+            height={300}
+            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
           <span>Treatment Suite</span>
         </div>
         <div className="photo-item">
-          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80" alt="Dental equipment" />
+          <Image
+            src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80"
+            alt="Dental equipment"
+            width={400}
+            height={300}
+            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
           <span>Advanced Technology</span>
         </div>
         <div className="photo-item">
-          <img src="https://img.freepik.com/free-photo/diverse-group-people-waiting-hospital-reception-lobby-attend-medical-appointment-with-general-practitioner-patients-waiting-room-lobby-sitting-healthcare-clinic-tripod-shot_482257-46247.jpg?semt=ais_hybrid&w=740&q=80" alt="Waiting area" />
+          <Image
+            src="https://img.freepik.com/free-photo/diverse-group-people-waiting-hospital-reception-lobby-attend-medical-appointment-with-general-practitioner-patients-waiting-room-lobby-sitting-healthcare-clinic-tripod-shot_482257-46247.jpg?semt=ais_hybrid&w=740&q=80"
+            alt="Waiting area"
+            width={400}
+            height={300}
+            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
           <span>Patient Lounge</span>
         </div>
       </div>
 
+      {/* SERVICES */}
       <section id="services">
         <div className="section-header reveal">
           <div className="section-label">What We Offer</div>
@@ -143,7 +176,14 @@ export default function SmileCraft() {
 
           <div className="service-card reveal">
             <div className="service-img">
-              <img src="https://images.pexels.com/photos/16212691/pexels-photo-16212691.png" alt="Teeth whitening" />
+              <Image
+                src="https://images.pexels.com/photos/16212691/pexels-photo-16212691.png"
+                alt="Teeth whitening"
+                width={600}
+                height={400}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
               <div className="service-img-overlay"></div>
             </div>
             <div className="service-body">
@@ -159,7 +199,14 @@ export default function SmileCraft() {
 
           <div className="service-card reveal">
             <div className="service-img">
-              <img src="https://www.smylifedental.co.in/wp-content/uploads/2018/02/invisalign.jpg" alt="Invisalign aligners" />
+              <Image
+                src="https://www.smylifedental.co.in/wp-content/uploads/2018/02/invisalign.jpg"
+                alt="Invisalign aligners"
+                width={600}
+                height={400}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
               <div className="service-img-overlay"></div>
             </div>
             <div className="service-body">
@@ -175,7 +222,14 @@ export default function SmileCraft() {
 
           <div className="service-card reveal">
             <div className="service-img">
-              <img src="https://images.pexels.com/photos/16309612/pexels-photo-16309612.jpeg" alt="Dental implants" />
+              <Image
+                src="https://images.pexels.com/photos/16309612/pexels-photo-16309612.jpeg"
+                alt="Dental implants"
+                width={600}
+                height={400}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
               <div className="service-img-overlay"></div>
             </div>
             <div className="service-body">
@@ -191,7 +245,14 @@ export default function SmileCraft() {
 
           <div className="service-card reveal">
             <div className="service-img">
-              <img src="https://media.istockphoto.com/id/973923664/photo/dentist-cleaning-teeth-with-titanium-metal-tooth-pick-instrument-to-remove-plaque-and-decay.jpg?s=612x612&w=0&k=20&c=QNG4Mxcd4FfCUFd4fDSAGCtIfwy_Nx0rHjstxrgk9ZA=" alt="Root canal treatment" />
+              <Image
+                src="https://media.istockphoto.com/id/973923664/photo/dentist-cleaning-teeth-with-titanium-metal-tooth-pick-instrument-to-remove-plaque-and-decay.jpg?s=612x612&w=0&k=20&c=QNG4Mxcd4FfCUFd4fDSAGCtIfwy_Nx0rHjstxrgk9ZA="
+                alt="Root canal treatment"
+                width={600}
+                height={400}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
               <div className="service-img-overlay"></div>
             </div>
             <div className="service-body">
@@ -207,7 +268,14 @@ export default function SmileCraft() {
 
           <div className="service-card reveal">
             <div className="service-img">
-              <img src="https://t4.ftcdn.net/jpg/19/44/62/71/240_F_1944627135_6HEXJGCJWmwUBYGf5waGmLddtfotBLCv.jpg" alt="Smile designing veneers" />
+              <Image
+                src="https://t4.ftcdn.net/jpg/19/44/62/71/240_F_1944627135_6HEXJGCJWmwUBYGf5waGmLddtfotBLCv.jpg"
+                alt="Smile designing veneers"
+                width={600}
+                height={400}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
               <div className="service-img-overlay"></div>
             </div>
             <div className="service-body">
@@ -223,7 +291,14 @@ export default function SmileCraft() {
 
           <div className="service-card reveal">
             <div className="service-img">
-              <img src="https://media.istockphoto.com/id/489865490/photo/teeth-checkup-at-dentists-office-dentist-examining-girls-teeth.jpg?s=612x612&w=0&k=20&c=EgtajCOVo_-JgvWIHEVE-zt6qlINW2NfWXYXjq4P8pw=" alt="Kids dentistry" />
+              <Image
+                src="https://media.istockphoto.com/id/489865490/photo/teeth-checkup-at-dentists-office-dentist-examining-girls-teeth.jpg?s=612x612&w=0&k=20&c=EgtajCOVo_-JgvWIHEVE-zt6qlINW2NfWXYXjq4P8pw="
+                alt="Kids dentistry"
+                width={600}
+                height={400}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
               <div className="service-img-overlay"></div>
             </div>
             <div className="service-body">
@@ -239,7 +314,14 @@ export default function SmileCraft() {
 
           <div className="service-card reveal">
             <div className="service-img">
-              <img src="https://media.istockphoto.com/id/1254343541/photo/3d-render-of-jaw-x-ray-with-implants-supported-dental-bridge.jpg?s=612x612&w=0&k=20&c=y5B52-VWBE1OBo0g88m_7ndtSPu6Cw0K3OdpDBDSEZw=" alt="Crowns and Bridges" />
+              <Image
+                src="https://media.istockphoto.com/id/1254343541/photo/3d-render-of-jaw-x-ray-with-implants-supported-dental-bridge.jpg?s=612x612&w=0&k=20&c=y5B52-VWBE1OBo0g88m_7ndtSPu6Cw0K3OdpDBDSEZw="
+                alt="Crowns and Bridges"
+                width={600}
+                height={400}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
               <div className="service-img-overlay"></div>
             </div>
             <div className="service-body">
@@ -255,7 +337,14 @@ export default function SmileCraft() {
 
           <div className="service-card reveal">
             <div className="service-img">
-              <img src="https://media.istockphoto.com/id/2193409937/photo/asian-woman-inflamed-swollen-gums.webp?a=1&b=1&s=612x612&w=0&k=20&c=cMXiB_RO1y8F-kKtGSgsaxzbNGKT9l_VpiDiiZwFFqk=" alt="Gum Therapy" />
+              <Image
+                src="https://media.istockphoto.com/id/2193409937/photo/asian-woman-inflamed-swollen-gums.webp?a=1&b=1&s=612x612&w=0&k=20&c=cMXiB_RO1y8F-kKtGSgsaxzbNGKT9l_VpiDiiZwFFqk="
+                alt="Gum Therapy"
+                width={600}
+                height={400}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
               <div className="service-img-overlay"></div>
             </div>
             <div className="service-body">
@@ -272,11 +361,20 @@ export default function SmileCraft() {
         </div>
       </section>
 
+      {/* DOCTOR */}
       <section id="doctor">
         <div className="doctor-inner">
           <div className="doctor-img-wrap reveal">
             <div className="doctor-frame"></div>
-            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&q=80" alt="Dr. Priya Mehta - SmileCraft Dental Studio" className="doctor-photo" />
+            <Image
+              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&q=80"
+              alt="Dr. Priya Mehta - SmileCraft Dental Studio"
+              width={700}
+              height={900}
+              className="doctor-photo"
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
             <div className="doctor-badge-float">
               <span className="badge-num">15+</span>
               <span className="badge-lbl">Years of Care</span>
@@ -284,7 +382,7 @@ export default function SmileCraft() {
           </div>
           <div className="doctor-content reveal">
             <div className="section-label">Meet Your Doctor</div>
-            <h2 className="doc-name">Dr. Priya<br/><em>Mehta</em></h2>
+            <h2 className="doc-name">Dr. Priya<br /><em>Mehta</em></h2>
             <div className="doc-title">BDS · MDS (Prosthodontics) · Invisalign Platinum Provider</div>
             <div className="section-divider"></div>
             <p className="doc-bio">With over 15 years of dedicated practice, Dr. Priya Mehta has built a reputation for combining clinical excellence with genuine compassion. Trained at AFMC Pune and further specialised in London, she brings world-class expertise to every patient who walks through our doors.</p>
@@ -299,6 +397,7 @@ export default function SmileCraft() {
         </div>
       </section>
 
+      {/* RESULTS */}
       <section id="results" style={{ background: 'var(--dark2)' }}>
         <div className="section-header reveal">
           <div className="section-label">Real Patients · Real Results</div>
@@ -310,11 +409,23 @@ export default function SmileCraft() {
           <div className="result-card reveal">
             <div className="result-pair">
               <div className="result-half">
-                <img src="https://i.postimg.cc/G3Fgfqn0/before.png" alt="Before smile treatment" />
+                <Image
+                  src="https://i.postimg.cc/G3Fgfqn0/before.png"
+                  alt="Before smile treatment"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                />
                 <div className="ba-label before-lbl">Before</div>
               </div>
               <div className="result-half">
-                <img src="https://i.postimg.cc/kGqs9P3H/after.png" alt="After smile treatment" />
+                <Image
+                  src="https://i.postimg.cc/kGqs9P3H/after.png"
+                  alt="After smile treatment"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                />
                 <div className="ba-label after-lbl">After</div>
               </div>
             </div>
@@ -327,11 +438,23 @@ export default function SmileCraft() {
           <div className="result-card reveal">
             <div className="result-pair">
               <div className="result-half">
-                <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?w=400&q=80" alt="Before teeth alignment" />
+                <Image
+                  src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?w=400&q=80"
+                  alt="Before teeth alignment"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                />
                 <div className="ba-label before-lbl">Before</div>
               </div>
               <div className="result-half">
-                <img src="https://images.ctfassets.net/vh25xg5i1h5l/7mBIU2XUrep5UbR0uzTQFW/eb3655c1c2f1722f433797d9b8e47519/photo-resources-patrick-mahomes-grey-background-putting-in-invisalign.jpg?w=1920" alt="After invisalign" />
+                <Image
+                  src="https://images.ctfassets.net/vh25xg5i1h5l/7mBIU2XUrep5UbR0uzTQFW/eb3655c1c2f1722f433797d9b8e47519/photo-resources-patrick-mahomes-grey-background-putting-in-invisalign.jpg?w=1920"
+                  alt="After invisalign"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                />
                 <div className="ba-label after-lbl">After</div>
               </div>
             </div>
@@ -344,11 +467,23 @@ export default function SmileCraft() {
           <div className="result-card reveal">
             <div className="result-pair">
               <div className="result-half">
-                <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80" alt="Before whitening" />
+                <Image
+                  src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80"
+                  alt="Before whitening"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                />
                 <div className="ba-label before-lbl">Before</div>
               </div>
               <div className="result-half">
-                <img src="https://i.pinimg.com/736x/d0/76/e6/d076e69d0ded3ae92ac00f7d1835fd8c.jpg" alt="After whitening" />
+                <Image
+                  src="https://i.pinimg.com/736x/d0/76/e6/d076e69d0ded3ae92ac00f7d1835fd8c.jpg"
+                  alt="After whitening"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                />
                 <div className="ba-label after-lbl">After</div>
               </div>
             </div>
@@ -361,6 +496,7 @@ export default function SmileCraft() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
       <section id="testimonials">
         <div className="section-header reveal">
           <div className="section-label">Patient Stories</div>
@@ -373,7 +509,14 @@ export default function SmileCraft() {
             <div className="testi-quote">"</div>
             <p className="testi-text">I was terrified of dentists my whole life. Dr. Mehta changed that completely. My Invisalign journey was painless and the results are beyond what I expected. The clinic feels like a luxury spa, not a dental office.</p>
             <div className="testi-author">
-              <img src="https://images.unsplash.com/photo-1675469675830-11d9a6099ef4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D" alt="Sneha Rathod" className="testi-avatar-img" />
+              <Image
+                src="https://images.unsplash.com/photo-1675469675830-11d9a6099ef4?w=80&q=80"
+                alt="Sneha Rathod"
+                width={80}
+                height={80}
+                className="testi-avatar-img"
+                style={{ objectFit: 'cover' }}
+              />
               <div>
                 <div className="testi-name">Sneha Rathod</div>
                 <div className="testi-stars">★★★★★</div>
@@ -385,7 +528,14 @@ export default function SmileCraft() {
             <div className="testi-quote">"</div>
             <p className="testi-text">Got 3 implants done here. The technology they use is incredible — I was eating normally within days. Dr. Priya explains every step patiently. Worth every rupee. Koregaon Park's best kept secret!</p>
             <div className="testi-author">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="Anil Marathe" className="testi-avatar-img" />
+              <Image
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80"
+                alt="Anil Marathe"
+                width={80}
+                height={80}
+                className="testi-avatar-img"
+                style={{ objectFit: 'cover' }}
+              />
               <div>
                 <div className="testi-name">Anil Marathe</div>
                 <div className="testi-stars">★★★★★</div>
@@ -397,7 +547,14 @@ export default function SmileCraft() {
             <div className="testi-quote">"</div>
             <p className="testi-text">Came in for teeth whitening before my wedding. The results were stunning — 8 shades whiter in one session! Everyone kept complimenting my smile in the wedding photos. Thank you SmileCraft!</p>
             <div className="testi-author">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80" alt="Pooja Joshi" className="testi-avatar-img" />
+              <Image
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80"
+                alt="Pooja Joshi"
+                width={80}
+                height={80}
+                className="testi-avatar-img"
+                style={{ objectFit: 'cover' }}
+              />
               <div>
                 <div className="testi-name">Pooja Joshi</div>
                 <div className="testi-stars">★★★★★</div>
@@ -408,6 +565,7 @@ export default function SmileCraft() {
         </div>
       </section>
 
+      {/* CONTACT */}
       <section id="contact" style={{ background: 'var(--dark2)', padding: '0' }}>
         <div className="contact-wrapper">
           <div className="contact-info reveal">
@@ -419,7 +577,7 @@ export default function SmileCraft() {
               <div className="contact-icon">📍</div>
               <div>
                 <div className="contact-label">Location</div>
-                <div className="contact-val">14, North Main Road, Koregaon Park<br/>Pune, Maharashtra 411001</div>
+                <div className="contact-val">14, North Main Road, Koregaon Park<br />Pune, Maharashtra 411001</div>
               </div>
             </div>
             <div className="contact-detail">
@@ -433,12 +591,12 @@ export default function SmileCraft() {
               <div className="contact-icon">🕐</div>
               <div>
                 <div className="contact-label">Clinic Hours</div>
-                <div className="contact-val">Mon–Sat: 10 AM – 8 PM<br/>Sunday: By Appointment Only</div>
+                <div className="contact-val">Mon–Sat: 10 AM – 8 PM<br />Sunday: By Appointment Only</div>
               </div>
             </div>
 
             <a href="https://wa.me/919876543210?text=Hi%20Dr.%20Priya!%20I%20would%20like%20to%20book%20a%20consultation%20at%20SmileCraft%20Dental%20Studio." className="whatsapp-btn" target="_blank" rel="noreferrer">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
               Chat on WhatsApp
             </a>
 
@@ -493,6 +651,7 @@ export default function SmileCraft() {
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer>
         <div className="footer-inner">
           <div className="footer-logo">SmileCraft <span>Dental Studio</span></div>
@@ -507,7 +666,7 @@ export default function SmileCraft() {
       </footer>
 
       <a href="https://wa.me/919876543210" className="float-wa" target="_blank" rel="noreferrer" title="Chat on WhatsApp">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
       </a>
     </>
   );
