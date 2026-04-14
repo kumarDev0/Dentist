@@ -410,7 +410,7 @@ export default function SmileCraft() {
             <div className="result-pair">
               <div className="result-half">
                 <Image
-                  src="https://i.postimg.cc/G3Fgfqn0/before.png"
+                  src="https://i.postimg.cc/5NyGFGZF/before.png"
                   alt="Before smile treatment"
                   width={400}
                   height={300}
