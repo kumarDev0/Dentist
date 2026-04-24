@@ -368,7 +368,7 @@ export default function SmileCraft() {
             <div className="doctor-frame"></div>
             <Image
               src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&q=80"
-              alt="Dr. Priya Mehta - SmileCraft Dental Studio"
+              alt="Dr. Kalyani Mehta - TOOTHBOOTH Dental Clinic"
               width={700}
               height={900}
               className="doctor-photo"
@@ -654,7 +654,7 @@ export default function SmileCraft() {
       {/* FOOTER */}
       <footer>
         <div className="footer-inner">
-          <div className="footer-logo">SmileCraft <span>Dental Studio</span></div>
+          <div className="footer-logo">TOOTHBOOTH <span>Dental Clinic</span></div>
           <div className="footer-links">
             <a href="#services" onClick={(e) => handleSmoothScroll(e, 'services')}>Services</a>
             <a href="#doctor" onClick={(e) => handleSmoothScroll(e, 'doctor')}>Doctor</a>
