@@ -7,8 +7,8 @@ import { useSearchParams } from 'next/navigation';
 function DemoContent() {
     const searchParams = useSearchParams();
 
-    const clinicName = searchParams.get('clinicName') || 'SmileCraft Dental Studio';
-    const doctorName = searchParams.get('doctorName') || 'Dr. Priya Mehta';
+    const clinicName = searchParams.get('clinicName') || 'TOOTHBOOTH Dental Clinic';
+    const doctorName = searchParams.get('doctorName') || 'Dr. Kalyani Mehta';
     const phone = searchParams.get('phone') || '+91 98765 43210';
     const address = searchParams.get('address') || '14, North Main Road, Koregaon Park, Pune 411001';
     const location = searchParams.get('location') || 'Koregaon Park, Pune';
