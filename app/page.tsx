@@ -55,7 +55,7 @@ export default function SmileCraft() {
     <>
       <nav id="navbar" style={{ padding: isScrolled ? '0' : '' }}>
         <div className="nav-inner">
-          <div className="logo">SmileCraft <span>Dental Studio</span></div>
+          <div className="logo">TOOTHBOOTH <span>Dental Clinic</span></div>
           <button
             className={`hamburger ${isMenuOpen ? 'open' : ''}`}
             id="hamburger"
