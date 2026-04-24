@@ -382,10 +382,10 @@ export default function SmileCraft() {
           </div>
           <div className="doctor-content reveal">
             <div className="section-label">Meet Your Doctor</div>
-            <h2 className="doc-name">Dr. Priya<br /><em>Mehta</em></h2>
+            <h2 className="doc-name">Dr. Kalyani<br /><em>Mehta</em></h2>
             <div className="doc-title">BDS · MDS (Prosthodontics) · Invisalign Platinum Provider</div>
             <div className="section-divider"></div>
-            <p className="doc-bio">With over 15 years of dedicated practice, Dr. Priya Mehta has built a reputation for combining clinical excellence with genuine compassion. Trained at AFMC Pune and further specialised in London, she brings world-class expertise to every patient who walks through our doors.</p>
+            <p className="doc-bio">With over 15 years of dedicated practice, Dr. Kalyani Mehta has built a reputation for combining clinical excellence with genuine compassion. Trained at AFMC Pune and further specialised in London, she brings world-class expertise to every patient who walks through our doors.</p>
             <div className="doc-creds">
               <div className="doc-cred"><span className="cred-line"></span>MDS — Armed Forces Medical College, Pune</div>
               <div className="doc-cred"><span className="cred-line"></span>Advanced Implantology — Royal College, London</div>
